@@ -1,0 +1,21 @@
+# Assignment brief / checklist (Monash copyright — keep private)
+Ass1_Checklist 2026S1.pdf
+FIT2094_2026S1_Ass1_Brief.pdf
+
+# Oracle SQL Data Modeler working files, backups, duplicates
+.$*.bkp
+ca_model/
+ca_model - Copy/
+ca_model.zip
+new_model.dmd
+
+# Generated SQL spool output
+ca_schema_output.txt
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.local
+*.localz
+~$*
