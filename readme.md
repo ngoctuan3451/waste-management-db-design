@@ -10,11 +10,11 @@ A waste-management operator needs a database to track which **bins** are supplie
 
 ## What I did
 
-- **Conceptual modelling** — identified entities, relationships, and cardinalities into an ER model (`ca_conceptual.pdf`).
-- **Logical modelling** — mapped the ER model to relations with keys and foreign keys (`ca_logical.pdf`).
-- **Normalisation** — normalised to remove redundancy and update anomalies, with the working documented (`ca_normalisation.pdf`).
-- **Documented assumptions** — recorded the business-rule assumptions that shaped the design (`ca_assumptions.pdf`).
-- **Physical implementation** — wrote the DDL for **14 tables** in Oracle 12c (`ca_schema.sql`).
+- **Conceptual modelling** — identified entities, relationships, and cardinalities into an ER model (`docs/conceptual_erd.pdf`).
+- **Logical modelling** — mapped the ER model to relations with keys and foreign keys (`docs/logical_model.pdf`).
+- **Normalisation** — normalised to 3NF to remove redundancy and update anomalies (`docs/normalisation.md`).
+- **Documented assumptions** — recorded the business-rule assumptions that shaped the design (`docs/design-decisions.md`).
+- **Physical implementation** — wrote the DDL for **14 tables** in Oracle 12c (`scripts/ca_schema.sql`).
 
 ## Design highlights
 
@@ -34,29 +34,32 @@ The full design write-up is in [`docs/`](docs/), rendered inline as markdown:
 - **[Normalisation (UNF → 3NF)](docs/normalisation.md)** — step-by-step normalisation of the collection data, showing the partial, transitive, and full functional dependencies at each stage.
 - **[Design decisions & assumptions](docs/design-decisions.md)** — the business assumptions, and the reasoning behind the lookup table, nullable columns, and surrogate-key choices.
 
-The conceptual and logical ER diagrams are included as PDFs (`ca_conceptual.pdf`, `ca_logical.pdf`).
+The conceptual and logical ER diagrams are in `docs/` (`conceptual_erd.pdf`, `logical_model.pdf`).
 
 ## How to run
 
 In Oracle SQL Developer (or any Oracle 12c+ connection):
 
 ```sql
-@ca_schema.sql
+@scripts/ca_schema.sql
 ```
 
-The script drops any existing tables, recreates all 14, then adds constraints and foreign keys. It spools output to `ca_schema_output.txt`.
+The script drops any existing tables, recreates all 14, then adds constraints and foreign keys.
 
 ## Repository structure
 
 ```
 .
-├── ca_schema.sql               # the physical DDL (14 tables, constraints, FKs)
-├── ca_conceptual.pdf           # ER / conceptual model (diagram)
-├── ca_logical.pdf              # logical model (diagram)
-├── ca_conceptual.drawio        # editable diagram source
-└── docs/
-    ├── normalisation.md        # UNF -> 3NF working
-    └── design-decisions.md     # assumptions + key design rationale
+├── scripts/
+│   └── ca_schema.sql           # physical DDL (14 tables, constraints, FKs)
+├── docs/
+│   ├── normalisation.md        # UNF -> 3NF working
+│   ├── design-decisions.md     # assumptions + key design rationale
+│   ├── conceptual_erd.pdf      # ER / conceptual model (diagram)
+│   ├── logical_model.pdf       # logical model (diagram)
+│   └── conceptual_erd.drawio   # editable diagram source
+├── readme.md
+└── .gitignore
 ```
 
 ## Skills shown
