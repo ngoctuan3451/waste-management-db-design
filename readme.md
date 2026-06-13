@@ -27,6 +27,15 @@ A waste-management operator needs a database to track which **bins** are supplie
 - **Many-to-many relationships resolved** with associative tables (`PROPERTY_OWNER`, `COLLECTION_BIN`, `CONTRACT_BIN`).
 - Column-level `COMMENT`s document every field's meaning.
 
+## Design documentation
+
+The full design write-up is in [`docs/`](docs/), rendered inline as markdown:
+
+- **[Normalisation (UNF → 3NF)](docs/normalisation.md)** — step-by-step normalisation of the collection data, showing the partial, transitive, and full functional dependencies at each stage.
+- **[Design decisions & assumptions](docs/design-decisions.md)** — the business assumptions, and the reasoning behind the lookup table, nullable columns, and surrogate-key choices.
+
+The conceptual and logical ER diagrams are included as PDFs (`ca_conceptual.pdf`, `ca_logical.pdf`).
+
 ## How to run
 
 In Oracle SQL Developer (or any Oracle 12c+ connection):
@@ -41,11 +50,13 @@ The script drops any existing tables, recreates all 14, then adds constraints an
 
 ```
 .
-├── ca_schema.sql           # the physical DDL (14 tables, constraints, FKs)
-├── ca_conceptual.pdf       # ER / conceptual model
-├── ca_logical.pdf          # logical model
-├── ca_normalisation.pdf    # normalisation working
-└── ca_assumptions.pdf      # documented business assumptions
+├── ca_schema.sql               # the physical DDL (14 tables, constraints, FKs)
+├── ca_conceptual.pdf           # ER / conceptual model (diagram)
+├── ca_logical.pdf              # logical model (diagram)
+├── ca_conceptual.drawio        # editable diagram source
+└── docs/
+    ├── normalisation.md        # UNF -> 3NF working
+    └── design-decisions.md     # assumptions + key design rationale
 ```
 
 ## Skills shown
